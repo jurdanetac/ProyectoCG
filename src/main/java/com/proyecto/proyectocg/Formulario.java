@@ -1,19 +1,25 @@
 package com.proyecto.proyectocg;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.NumberFormat;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-public class Formulario extends JFrame {
+public class Formulario extends JFrame implements ActionListener {
 
   public Formulario() {
     // Crear y nombrar la ventana
     JFrame Ventana = new JFrame();
     // Inicializar el panel con sus respectivos componentes
-    iniciarComponentes();
+    // iniciarComponentes();
+    login();
     Ventana.setSize(500, 500);
     Ventana.setTitle("Formulario Del Usuario");
     Ventana.setResizable(false);
@@ -28,9 +34,9 @@ public class Formulario extends JFrame {
     //JTextField para el cuadro de texto
     JTextField TN = new JTextField();
     JLabel CI = new JLabel("C.I: ");
-    JTextField TCI = new JTextField();
+    JTextField TCI = new JFormattedTextField(NumberFormat.getIntegerInstance());
     JLabel CP = new JLabel("Código Postal: ");
-    JTextField TCP = new JTextField();
+    JTextField TCP = new JFormattedTextField(NumberFormat.getIntegerInstance());
     JLabel DRCCN = new JLabel("Dirección De Vivienda: ");
     JTextField TDRCCN = new JTextField();
     JLabel NMR = new JLabel("No. Telefónico: ");
@@ -112,5 +118,54 @@ public class Formulario extends JFrame {
     Panel.add(FDNM);
     Panel.add(FDNA);
     Panel.add(FTS);
+
+    JButton botonSalir = generarBotonSalida("Salir");
+    botonSalir.setBounds(225, 435, 50, 50);
+    Panel.add(botonSalir);
+  }
+
+  public void login() {
+    // panel de login
+    JPanel Panel = new JPanel();
+    Panel.setLayout(null);
+    this.getContentPane().add(Panel);
+
+    JLabel titulo = new JLabel("asdadasd");
+    titulo.setBounds(10, 10, 50, 50);
+    Panel.add(titulo);
+
+    JButton botonLogin = new JButton();
+    botonLogin.setText("Login");
+    botonLogin.setBounds(230, 200, 70, 50);
+    ActionListener logearseAlPrograma = new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        Panel.setVisible(false);
+        iniciarComponentes();
+      }
+    };
+    botonLogin.addActionListener(logearseAlPrograma);
+    Panel.add(botonLogin);
+
+    JButton botonSalir = generarBotonSalida("Salir");
+    botonLogin.setBounds(250, 400, 50, 50);
+    Panel.add(botonSalir);
+  }
+
+  public JButton generarBotonSalida(String texto) {
+    JButton botonSalir = new JButton();
+    botonSalir.setText(texto);
+    ActionListener salirDelPrograma = new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        System.exit(0);
+      }
+    };
+    botonSalir.addActionListener(salirDelPrograma);
+    return botonSalir;
+  }
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
   }
 }
