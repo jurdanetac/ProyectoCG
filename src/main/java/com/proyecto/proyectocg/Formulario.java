@@ -1,11 +1,10 @@
 package com.proyecto.proyectocg;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.NumberFormat;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,13 +33,13 @@ public class Formulario extends JFrame implements ActionListener {
     //JTextField para el cuadro de texto
     JTextField TN = new JTextField();
     JLabel CI = new JLabel("C.I: ");
-    JTextField TCI = new JFormattedTextField(NumberFormat.getIntegerInstance());
+    JTextField TCI = new JNumberTextField();
     JLabel CP = new JLabel("Código Postal: ");
-    JTextField TCP = new JFormattedTextField(NumberFormat.getIntegerInstance());
+    JTextField TCP = new JNumberTextField();
     JLabel DRCCN = new JLabel("Dirección De Vivienda: ");
     JTextField TDRCCN = new JTextField();
     JLabel NMR = new JLabel("No. Telefónico: ");
-    JTextField TNMR = new JTextField();
+    JTextField TNMR = new JNumberTextField();
     JLabel EM = new JLabel("Email: ");
     JTextField TEM = new JTextField();
     JLabel LDN = new JLabel("Lugar De Nacimiento: ");
@@ -120,7 +119,7 @@ public class Formulario extends JFrame implements ActionListener {
     Panel.add(FTS);
 
     JButton botonSalir = generarBotonSalida("Salir");
-    botonSalir.setBounds(225, 435, 50, 50);
+    botonSalir.setBounds(150, 350, 70, 40);
     Panel.add(botonSalir);
   }
 
@@ -130,13 +129,29 @@ public class Formulario extends JFrame implements ActionListener {
     Panel.setLayout(null);
     this.getContentPane().add(Panel);
 
-    JLabel titulo = new JLabel("asdadasd");
-    titulo.setBounds(10, 10, 50, 50);
+    JLabel titulo = new JLabel("Login");
+    titulo.setFont(new Font("Sans", Font.PLAIN, 50));
+    titulo.setBounds(150, 100, 450, 60);
     Panel.add(titulo);
+
+    JLabel usuario = new JLabel("Usuario");
+    JTextField usuarioT = new JTextField();
+    JLabel contrasena = new JLabel("Contraseña");
+    JTextField contrasenaT = new JTextField();
+
+    usuario.setBounds(100, 200, 100, 40);
+    usuarioT.setBounds(100, 230, 250, 40);
+    contrasena.setBounds(100, 260, 100, 40);
+    contrasenaT.setBounds(100, 290, 250, 40);
+
+    Panel.add(usuario);
+    Panel.add(usuarioT);
+    Panel.add(contrasena);
+    Panel.add(contrasenaT);
 
     JButton botonLogin = new JButton();
     botonLogin.setText("Login");
-    botonLogin.setBounds(230, 200, 70, 50);
+    botonLogin.setBounds(125, 350, 70, 40);
     ActionListener logearseAlPrograma = new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -148,7 +163,7 @@ public class Formulario extends JFrame implements ActionListener {
     Panel.add(botonLogin);
 
     JButton botonSalir = generarBotonSalida("Salir");
-    botonLogin.setBounds(250, 400, 50, 50);
+    botonSalir.setBounds(225, 350, 70, 40);
     Panel.add(botonSalir);
   }
 
