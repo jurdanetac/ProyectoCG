@@ -3,6 +3,7 @@ package com.proyecto.proyectocg;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -131,8 +132,13 @@ public class Formulario extends JFrame implements ActionListener {
 
     JLabel titulo = new JLabel("Login");
     titulo.setFont(new Font("Sans", Font.PLAIN, 50));
-    titulo.setBounds(150, 100, 450, 60);
+    titulo.setBounds(150, 40, 450, 60);
     Panel.add(titulo);
+
+    ImageIcon image = new ImageIcon(getClass().getResource("out.png"));
+    JLabel imagelabel = new JLabel(image);
+    imagelabel.setBounds(110,50,200,200);
+    Panel.add(imagelabel);
 
     JLabel usuario = new JLabel("Usuario");
     JTextField usuarioT = new JTextField();
